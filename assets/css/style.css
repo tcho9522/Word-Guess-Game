@@ -2,14 +2,14 @@
     height: 350px;
 }
 #sidebar{
-    width: 8%;
+    width: 10%;
     float: left;
 }
 #button{
     text-align: center;
 }
 #word{
-    width: 92%;
+    width: 90%;
     float: left;
     font-size: 50px;
     text-align: center;

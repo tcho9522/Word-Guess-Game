@@ -17,6 +17,14 @@ document.getElementById("button").addEventListener("click", function () {
         }
         guess--;
         displayStats();
+        if(guess===0){
+            alert("YOU LOSE:(")
+            promptReset();
+        }
+        if(word===newWord){
+            alert("you win!!:D")
+            promptReset();
+        }
     }
 });
 
@@ -45,8 +53,9 @@ function categories() {
 }
 
 function initialize() {
+    lettersGuessed=[];
+    guess=9;
     displayStats();
-    // document.getElementById("sidebar").innerHTML = "Wins: " + wins + "<br>Losses: " + losses + "<br>Guesses left: " + guess + "<br>Letters guessed: ";
     var newWord = "";
     for (var i = 0; i < word.length; i++) {
         newWord = newWord.concat("_ ")
@@ -54,12 +63,18 @@ function initialize() {
     document.getElementById("word").innerHTML = newWord;
 }
 function displayStats() {
-    document.getElementById("sidebar").innerHTML = "Wins: " + wins + "<br>Losses: " + losses + "<br>Guesses left: " + guess + "<br>Letters guessed: " + lettersGuessed;
+    document.getElementById("sidebar").innerHTML = "Wins: " + wins + "<br>Losses: " + losses + "<br>Guesses left: " + guess + "<br>Letters guessed: <br>" + lettersGuessed;
 }
 function pickWord() {
     word = Math.floor(Math.random() * 10);
 }
-
+function promptReset(){
+    var gameOver = confirm("start new game?");
+    if(gameOver){
+        initialize();
+    }
+    else{document.write(":(")}
+}
 
 
 // WORK IN PROGRESS
