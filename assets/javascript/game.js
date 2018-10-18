@@ -3,7 +3,7 @@ var losses = 0;
 var guess = 9;
 var array = [];
 var lettersGuessed = [];
-var word = "ozark";
+var word = "colorado";
 //==========Game start==========//
 document.getElementById("button").addEventListener("click", function () {
     initialize();
