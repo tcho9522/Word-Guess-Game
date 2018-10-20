@@ -16,26 +16,47 @@ document.getElementById("button").addEventListener("click", function () {
                 alert("you already guessed this letter");
             }
             else{
-                lettersGuessed.push(letter);
-                updateWord(letter);
+                updateword(letter);
             }
         }
-        // updateWord(letter);
-        // guess--;
         displayStats();
+
         if (guess === 0) {
             alert("YOU LOSE:(")
             promptReset();
         }
         if (word === newWord) {         // IF THEY GUESS LAST LETTER ON LAST GUESS, THEN GLITCH HAPPENS. FIX ME
-            updateWord();
+            updateword();
             alert("you win!!:D")
             promptReset();
         }
     }
 });
 
-
+function updateword(letter) {
+    newWord = "";
+    var secondString = "";
+    var correctLetters = [];
+    if(word.indexOf(letter)>-1){
+        correctLetters.push(letter);
+        for(var i = 0; i<word.length; i++){
+            secondString = word.charAt(i)
+        }
+    }
+    else{
+        lettersGuessed.push(letter);
+    }
+    for(i=0; i<word.length; i++){
+        if(lettersGuessed.includes(word.charAt(i))){
+            secondString = word.charAt(i);
+            newWord = newWord.concat(secondString);
+        }
+        else{
+            newWord = newWord.concat("_ ");
+        }
+    }
+    document.getElementById("word").innerHTML = newWord;
+}
 function updateWord(letter) {
     newWord = "";
     var secondString = "";
