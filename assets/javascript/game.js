@@ -36,16 +36,8 @@ document.getElementById("button").addEventListener("click", function () {
 function updateword(letter) {
     newWord = "";
     var secondString = "";
-    var correctLetters = [];
-    if(word.indexOf(letter)>-1){
-        correctLetters.push(letter);
-        for(var i = 0; i<word.length; i++){
-            secondString = word.charAt(i)
-        }
-    }
-    else{
-        lettersGuessed.push(letter);
-    }
+    lettersGuessed.push(letter);
+    guess--;
     for(i=0; i<word.length; i++){
         if(lettersGuessed.includes(word.charAt(i))){
             secondString = word.charAt(i);
@@ -104,4 +96,3 @@ function promptReset() {
     }
     else { document.write(":(") }
 }
-
