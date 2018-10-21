@@ -10,36 +10,9 @@ var word = "colorado";
 //==========Game start==========//
 document.getElementById("button").addEventListener("click", function () {
     categories();
-    // if (array.length != 0) {
-    //     alert("initialize");
-    //     initialize();
-    //     document.onkeyup = function (event) {
-    //         var letter = event.key.toLowerCase();
-    //         if (event.which >= 65 && event.which <= 90) {                   //If condition to make sure that key thats pressed is alpha
-    //             if (lettersGuessed.includes(letter)) {
-    //                 alert("you already guessed this letter");
-    //             }
-    //             else {
-    //                 updateword(letter);
-    //             }
-    //         }
-    //         displayStats();
-
-    //         if (guess === 0) {
-    //             alert("YOU LOSE:(")
-    //             promptReset();
-    //         }
-    //         if (word === newWord) {         // IF THEY GUESS LAST LETTER ON LAST GUESS, THEN GLITCH HAPPENS. FIX ME
-    //             updateword();
-    //             document.getElementById("word").innerText = newWord;
-    //             alert("you win!!:D")
-    //             promptReset();
-    //         }
-    //     }
-    // }
 });
 
-function updateword(letter) {
+function updateWord(letter) {
     newWord = "";
     var secondString = "";
     lettersGuessed.push(letter);
@@ -55,27 +28,9 @@ function updateword(letter) {
     }
     document.getElementById("word").innerHTML = newWord;
 }
-function updateWord(letter) {
-    newWord = "";
-    var secondString = "";
-    for (var i = 0; i < word.length; i++) {                   //Checks each letter of the word
-        for (var j = 0; j < lettersGuessed.length; j++) {      //Checks each index of the lettersGuessed array
-            if (word.charAt(i) === lettersGuessed[j]) {
-                secondString = lettersGuessed[j];
-                newWord = newWord.concat(secondString);
-                // letterPresent = true;
-                break;
-            }
-            else if (j === lettersGuessed.length - 1) {
-                newWord = newWord.concat("_ ");
-            }
-        }
-    }
-    document.getElementById("word").innerHTML = newWord;
-}
 function categories() {
     document.getElementById("header").innerHTML = "Pick your Category";
-    document.getElementById("buttons").innerHTML = "<button id='fruits'>fruit</button><button id='vegetables'>vegetables</button><button id='animals'>animals</button>"
+    document.getElementById("buttons").innerHTML = "<button id='fruits'>fruits</button><button id='vegetables'>vegetables</button><button id='animals'>animals</button>"
     document.getElementById("fruits").addEventListener("click", function () {
         array = fruits;
         document.getElementById("header").innerHTML = "Categories: Fruits";
@@ -102,7 +57,7 @@ function runGame() {
                     alert("you already guessed this letter");
                 }
                 else {
-                    updateword(letter);
+                    updateWord(letter);
                 }
             }
             displayStats();
@@ -112,7 +67,7 @@ function runGame() {
                 promptReset();
             }
             if (word === newWord) {         // IF THEY GUESS LAST LETTER ON LAST GUESS, THEN GLITCH HAPPENS. FIX ME
-                updateword();
+                updateWord();
                 document.getElementById("word").innerText = newWord;
                 alert("you win!!:D")
                 promptReset();
